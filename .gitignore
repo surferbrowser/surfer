@@ -1,0 +1,5 @@
+node_modules
+dist
+pages/main/*.png
+pages/new-tab/*.png
+.DS_Store
