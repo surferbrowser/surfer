@@ -60,6 +60,7 @@ function createWindow() {
 
     ipcMain.on('set-theme-color', (_e: Event, color: string) => {
         win.setBackgroundColor(color)
+        win.webContents.send('set-theme-color', color)
     })
 }
 

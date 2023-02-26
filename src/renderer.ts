@@ -63,3 +63,8 @@ document.addEventListener('keydown', (ev: KeyboardEvent) => {
     }
 })
 
+window.api.handleSetThemeColor((_e: Event, color: string) => {
+    document.body.style.setProperty('--dark-blue', color)
+    // document.body.style.setProperty('--light-blue', color)
+})
+

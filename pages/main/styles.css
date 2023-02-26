@@ -223,7 +223,7 @@ body {
     height: auto;
 }
 
-.tab:first-of-type {
+.active {
     outline: 2px solid var(--outline-color);
 }
 
