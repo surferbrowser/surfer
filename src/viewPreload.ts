@@ -26,6 +26,8 @@ window.addEventListener("DOMContentLoaded", () => {
     logo.srcset = `http://localhost:8088/coloredLogo.png`
 
     logo.ondragstart = () => false
+
+    logo.style.userSelect = 'none'
     
     document.body.style.backgroundColor = '#CCE3FF'
 

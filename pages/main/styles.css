@@ -13,8 +13,23 @@
 :root {
     --dark-blue: #A8C9F0;
     --light-blue: #CCE3FF;
+    --highlight-blue: #d2e6ff;
     --text-color: black;
+    --outline-color: #2D4766;
+    --outline-color-half-alpha: #2d47667F;
+    --outline-color-zero-alpha: #2d476600;
 }
+
+/* :root {
+    --dark-blue: #E8EAEE;
+    --light-blue: #FFFFFF;
+    //--light-blue: #E8EAEE;
+    --highlight-blue: #FFFFFF;
+    --text-color: black;
+    --outline-color: #505050;
+    --outline-color-half-alpha: #5050507F;
+    --outline-color-zero-alpha: #50505000;
+} */
 
 /* :root {
     --dark-blue: #312E2B;
@@ -44,6 +59,8 @@ body {
     display: flex;
 
     -webkit-app-region: drag;
+
+    /* display: none; */
 }
 
 #tabs {
@@ -55,7 +72,7 @@ body {
     flex-direction: row;
     align-items: center;
 
-    gap: 5px;
+    gap: 6px;
 }
 
 #trafficMargin {
@@ -103,16 +120,16 @@ body {
     
     transition: background 100ms ease-out;
 
-    outline: 2px solid #2d476600;
+    outline: 2px solid var(--outline-color-zero-alpha);
     transition: outline-color 100ms ease-out;
 }
 
 .tab:hover {
-    background: #d2e6ff;
+    background: var(--highlight-blue);
     /* background: #deb790; */
     /* background: #bed8f9; */
 
-    outline: 2px solid #2d47667F;
+    outline: 2px solid var(--outline-color-half-alpha);
 }
 
 .tabTitle {
@@ -151,6 +168,10 @@ body {
     font-size: 10.5pt;
 }
 
+/* #topSpacer {
+    height: 23px;
+} */
+
 #sidebar {
     width: 42px;
     height: calc(100vh - 45px);
@@ -187,14 +208,14 @@ body {
 
     -webkit-app-region: no-drag;
 
-    outline: 2px solid #2d476600;
+    outline: 2px solid var(--outline-color-zero-alpha);
     transition: outline-color 100ms ease-out;
 }
 
 .icon:hover {
-    background: #d2e6ff;
+    background: var(--highlight-blue);
 
-    outline: 2px solid #2d47667F;
+    outline: 2px solid var(--outline-color-half-alpha);
 }
 
 .icon > img {
@@ -203,6 +224,6 @@ body {
 }
 
 .tab:first-of-type {
-    outline: 2px solid #2D4766;
+    outline: 2px solid var(--outline-color);
 }
 
