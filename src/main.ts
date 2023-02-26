@@ -48,13 +48,13 @@ function createWindow() {
 
     // win.webContents.openDevTools()
 
-    // const view = new RoundView(win, new Rect(788, 557, 6, 37), 10)
+    // const view = new RoundView(win, new Rect(788, 557, 6, 37))
 
-    // const view = new RoundView(win, new Rect(788, 555, 6, 39), 10)
+    // const view = new RoundView(win, new Rect(788, 555, 6, 39))
 
-    const view = new RoundView(win, new Rect(740, 555, 54, 39), 10)
+    const view = new RoundView(win, new Rect(740, 555, 54, 39))
 
-    // const view = new RoundView(win, new Rect(740, 577, 54, 23), 10)
+    // const view = new RoundView(win, new Rect(740, 577, 54, 23))
 
     // const view = new View(win, new Rect(800, 563, 0, 37))
 

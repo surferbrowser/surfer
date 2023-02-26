@@ -106,16 +106,8 @@ export class View {
     }
 }
 
-// TODO: Add ability to change corner radius
-
 export class RoundView extends View {
-    constructor(win: BrowserWindow, rect: Rect, radius: number) {
-        if (radius < 0) {
-            throw new Error('Invalid radius, provide a non-negative number.')
-        } else if (!Number.isInteger(radius)) {
-            throw new Error('Invalid radius, provide an integer number.')
-        }
-
+    constructor(win: BrowserWindow, rect: Rect) {
         super(win, rect)
 
         const { x, y, width, height } = this.view.getBounds()
@@ -134,7 +126,7 @@ export class RoundView extends View {
         lt.webContents.loadFile(path.join(__dirname, '../pages/round/lt.html'))
         win.addBrowserView(lt)
 
-        lt.setBounds({ x: x, y: y, width: radius, height: radius })
+        lt.setBounds({ x: x, y: y, width: 10, height: 10 })
 
         lt.webContents.on('focus', () => {
             win.webContents.focus()
@@ -152,11 +144,11 @@ export class RoundView extends View {
         lb.webContents.loadFile(path.join(__dirname, '../pages/round/lb.html'))
         win.addBrowserView(lb)
 
-        lb.setBounds({ x: x, y: y + height - radius, width: radius, height: radius })
+        lb.setBounds({ x: x, y: y + height - 10, width: 10, height: 10 })
 
         win.on('resize', () => {
             const bnds = win.getBounds()
-            lb.setBounds({ x: rect.x, y: rect.y + bnds.height - heightOff  - rect.y - radius, width: radius, height: radius })
+            lb.setBounds({ x: rect.x, y: rect.y + bnds.height - heightOff  - rect.y - 10, width: 10, height: 10 })
         })
 
         lb.webContents.on('focus', () => {
@@ -175,11 +167,11 @@ export class RoundView extends View {
         rt.webContents.loadFile(path.join(__dirname, '../pages/round/rt.html'))
         win.addBrowserView(rt)
 
-        rt.setBounds({ x: x + width - radius, y: y, width: radius, height: radius })
+        rt.setBounds({ x: x + width - 10, y: y, width: 10, height: 10 })
 
         win.on('resize', () => {
             const bnds = win.getBounds()
-            rt.setBounds({ x: rect.x + bnds.width - widthOff - rect.x - radius, y: rect.y, width: radius, height: radius })
+            rt.setBounds({ x: rect.x + bnds.width - widthOff - rect.x - 10, y: rect.y, width: 10, height: 10 })
         })
 
         rt.webContents.on('focus', () => {
@@ -198,11 +190,11 @@ export class RoundView extends View {
         rb.webContents.loadFile(path.join(__dirname, '../pages/round/rb.html'))
         win.addBrowserView(rb)
 
-        rb.setBounds({ x: x + width - radius, y: y + height - radius, width: radius, height: radius })
+        rb.setBounds({ x: x + width - 10, y: y + height - 10, width: 10, height: 10 })
 
         win.on('resize', () => {
             const bnds = win.getBounds()
-            rb.setBounds({ x: rect.x + bnds.width - widthOff - rect.x - radius, y: rect.y + bnds.height - heightOff  - rect.y - radius, width: radius, height: radius })
+            rb.setBounds({ x: rect.x + bnds.width - widthOff - rect.x - 10, y: rect.y + bnds.height - heightOff  - rect.y - 10, width: 10, height: 10 })
         })
 
         rb.webContents.on('focus', () => {
@@ -228,7 +220,7 @@ export class RoundView extends View {
 
         this.view.webContents.on('leave-html-full-screen', () => {
             win.addBrowserView(lt)
-            lt.setBounds({ x: x, y: y, width: radius, height: radius })
+            lt.setBounds({ x: x, y: y, width: 10, height: 10 })
             win.addBrowserView(lb)
             win.addBrowserView(rt)
             win.addBrowserView(rb)
@@ -237,7 +229,7 @@ export class RoundView extends View {
         win.on('leave-full-screen', () => {
             // if (this.isHTMLFullScreen) {
                 win.addBrowserView(lt)
-                lt.setBounds({ x: x, y: y, width: radius, height: radius })
+                lt.setBounds({ x: x, y: y, width: 10, height: 10 })
                 win.addBrowserView(lb)
                 win.addBrowserView(rt)
                 win.addBrowserView(rb)

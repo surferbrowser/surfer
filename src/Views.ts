@@ -7,7 +7,7 @@ export default class Views {
     win: BrowserWindow
     rect: Rectangle
     views: [View]
-    constructor(win: BrowserWindow, rect: Rectangle) {
+    constructor(win: BrowserWindow, rect: Rect) {
         this.win = win
         this.rect = rect
 
