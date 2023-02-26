@@ -1,5 +1,5 @@
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
 
 import Rect from './Rect'
@@ -58,6 +58,9 @@ function createWindow() {
 
     // const view = new View(win, new Rect(800, 563, 0, 37))
 
+    ipcMain.on('set-theme-color', (_e: Event, color: string) => {
+        win.setBackgroundColor(color)
+    })
 }
 
 

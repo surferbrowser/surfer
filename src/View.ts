@@ -38,7 +38,7 @@ export class View {
 
         this.view.webContents.loadURL('https://google.com/')
 
-        // this.view.webContents.toggleDevTools()
+        this.view.webContents.toggleDevTools()
 
 
         this.view.webContents.on('did-finish-load', () => {
@@ -207,6 +207,15 @@ export class RoundView extends View {
 
         rb.webContents.on('focus', () => {
             win.webContents.focus()
+        })
+
+        ipcMain.on('set-theme-color', (_e: Event, color: string) => {
+            [lt, lb, rt, rb].forEach((v) => {
+                v.webContents.insertCSS(
+                `div:before {
+                    color: ${color} !important;
+                }`)
+            })
         })
 
 
