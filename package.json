@@ -21,7 +21,7 @@
     "typescript": "^4.8.3"
   },
   "dependencies": {
-    "@cliqz/adblocker-electron": "^1.25.2",
+    "@cliqz/adblocker-electron": "^1.26.1",
     "cross-fetch": "^3.1.5",
     "jimp": "^0.16.2",
     "request": "^2.88.2"
