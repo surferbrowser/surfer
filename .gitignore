@@ -1,5 +1,6 @@
 node_modules
 dist
 pages/main/*.png
+pages/main/*.svg
 pages/new-tab/*.png
 .DS_Store

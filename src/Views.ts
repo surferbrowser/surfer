@@ -38,12 +38,6 @@ export class RoundViews extends Views {
         this.views[1] = new View(this.win, this.rect)
         this.views[1].view.webContents.loadURL('https://example.com')
         this.win.removeBrowserView(this.views[1].view)
-        setTimeout(() => {
-            this.changeToView(1)
-            setTimeout(() => {
-                this.changeToView(0)
-            }, 6000)
-        }, 6000)
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 
