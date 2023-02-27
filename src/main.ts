@@ -3,8 +3,8 @@ import { app, BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
 
 import Rect from './Rect'
-import Views from './Views'
-import { View, RoundView } from './View'
+// import { View, RoundView } from './View'
+import { Views, RoundViews } from './Views'
 
 import { newTabPage } from './newTabPage'
 
@@ -52,7 +52,9 @@ function createWindow() {
 
     // const view = new RoundView(win, new Rect(788, 555, 6, 39))
 
-    const view = new RoundView(win, new Rect(740, 555, 54, 39))
+    // const view = new RoundView(win, new Rect(740, 555, 54, 39))
+    
+    const view = new RoundViews(win, new Rect(740, 555, 54, 39))
 
     // const view = new RoundView(win, new Rect(740, 577, 54, 23))
 

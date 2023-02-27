@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const logo = <HTMLImageElement>(document.querySelector('.lnXdpd'))
 
-    logo.srcset = `http://localhost:8088/coloredLogo.png`
+    logo.srcset = `http://localhost:8888/coloredLogo.png`
 
     logo.ondragstart = () => false
 
@@ -129,10 +129,8 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
     const theme = document.querySelector('meta[name="theme-color"]')
     if (theme !== null) {
-        console.log(theme.getAttribute('content'))
         ipcRenderer.send('set-theme-color', theme.getAttribute('content'))
     } else {
-        console.log('Couldn\'t find a theme color on this page')
-        ipcRenderer.send('set-theme-color', '#A8C9F0')
+        // ipcRenderer.send('set-theme-color', '#A8C9F0')
     }
 })
