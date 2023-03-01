@@ -23,7 +23,7 @@ export function newTabPage(callback: () => void): void {
     
     download('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', '../pages/new-tab/logo.png', () => {
         colorLogo(66, 143, 239).then(() => {
-            const process = exec(`python3 -m http.server 8888 --directory "${path.join(__dirname, '../pages/new-tab')}"`)
+            const process = exec(`python3 -m http.server 8008 --directory "${path.join(__dirname, '../pages/new-tab')}"`)
 
             callback()
 

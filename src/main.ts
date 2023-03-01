@@ -14,10 +14,6 @@ declare global {
     }
 }
 
-app.addRecentDocument(path.join(__dirname, '../src/main.ts'))
-
-const quitOnClose = true
-
 function createWindow() {
     const win = new BrowserWindow({
         width: 800,
@@ -71,18 +67,14 @@ app.whenReady().then(() => {
 
     newTabPage(createWindow)
 
-    if (!quitOnClose) {
-        app.on('activate', function () {
-            if (BrowserWindow.getAllWindows().length === 0) createWindow()
-        })
-    }
+    // app.on('activate', function () {
+    //     if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    // })
 })
 
-if (!quitOnClose) {
-    app.on('window-all-closed', () => {
-        if (process.platform !== 'darwin') {
-            app.quit()
-        }
-    })
-}
+// app.on('window-all-closed', () => {
+//     if (process.platform !== 'darwin') {
+//         app.quit()
+//     }
+// })
 
