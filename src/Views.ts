@@ -35,9 +35,30 @@ export class RoundViews extends Views {
 
         this.currentView = this.views[0]
 
-        this.views[1] = new View(this.win, this.rect)
-        this.views[1].view.webContents.loadURL('https://example.com')
-        this.win.removeBrowserView(this.views[1].view)
+        const CSSes = Array<string>(null, null, null, null)
+
+        this.currentView.view.webContents.on('did-change-theme-color', (_e: Event, color: string) => {
+            [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
+                if (CSSes[i] !== null) {
+                    v.webContents.removeInsertedCSS(CSSes[i])
+                }
+                if (color !== null) {
+                    v.webContents.insertCSS(
+                    `div:before {
+                        color: ${color} !important;
+                    }`).then((value) => {
+                        CSSes[i] = value
+                    })
+                } else {
+                    v.webContents.insertCSS(
+                    `div:before {
+                        color: #ffffff !important;
+                    }`).then((value) => {
+                        CSSes[i] = value
+                    })
+                }
+            })
+        })
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 

@@ -4,17 +4,19 @@ import * as path from 'path'
 
 import Rect from './Rect'
 // import { View, RoundView } from './View'
-import { Views, RoundViews } from './Views'
+import { RoundViews } from './Views'
 
 import { newTabPage } from './newTabPage'
 
 declare global {
     interface Window {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         api: any
     }
 }
 
 function createWindow() {
+    const backgroundColor = 'A8C9F0'
     const win = new BrowserWindow({
         width: 800,
         height: 600,
@@ -56,9 +58,14 @@ function createWindow() {
 
     // const view = new View(win, new Rect(800, 563, 0, 37))
 
-    views.views[0].view.webContents.addListener('did-change-theme-color', (_e: Event, color: string) => {
-        win.setBackgroundColor(color)
-        win.webContents.send('set-theme-color', color)
+    views.currentView.view.webContents.addListener('did-change-theme-color', (_e: Event, color: string) => {
+        if (color !== null) {
+            win.setBackgroundColor(color)
+            win.webContents.send('set-theme-color', color)
+        } else {
+            win.setBackgroundColor('#A8C9F0')
+            win.webContents.send('set-theme-color', '#A8C9F0')
+        }
     })
 }
 

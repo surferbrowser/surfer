@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const logo = <HTMLImageElement>(document.querySelector('.lnXdpd'))
 
-    logo.srcset = `http://localhost:8008/coloredLogo.png`
+    logo.srcset = `http://localhost:1234/coloredLogo.png`
 
     logo.ondragstart = () => false
 
