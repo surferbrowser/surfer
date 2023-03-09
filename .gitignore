@@ -1,6 +1,7 @@
 node_modules
 dist
-pages/main/*.png
-pages/main/*.svg
-pages/new-tab/*.png
+# Surfer currently doesn't have any branding, so any graphics are banned from being commited to avoid
+# uncertified use of company's logos while prototyping the ui
+*.png
+*.svg
 .DS_Store

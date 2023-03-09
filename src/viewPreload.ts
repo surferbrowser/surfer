@@ -28,13 +28,14 @@ window.addEventListener("DOMContentLoaded", () => {
     logo.ondragstart = () => false
 
     logo.style.userSelect = 'none'
-    
-    document.body.style.backgroundColor = '#CCE3FF'
+
+    // document.body.style.backgroundColor = '#CCE3FF'
+    document.body.style.backgroundColor = '#F8F6F1'
 
     document.querySelector('.o3j99.c93Gbe').remove()
-    
+
     document.querySelector('.FPdoLc.lJ9FBc').remove()
-    
+
     document.getElementById('SIvCob').remove()
 
     document.querySelector('.nDcEnd').remove()
@@ -46,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
     spacerEl.style.height = '104px'
 
     middlePart.parentNode.insertBefore(spacerEl, middlePart)
-    
+
     document.querySelector('.lJ9FBc').remove();
 
     (document.querySelector('.aajZCb') as HTMLElement).style.marginBottom = '10px';
@@ -54,7 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
     (document.querySelector('.QCzoEc.z1asCe.MZy1Rb').children[0].firstChild as SVGElement).style.color = '#5e6369';
 
     (document.querySelector('input.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
-    
+
     const cssText = `
     input.gLFyf::placeholder {
         color: #5e6369; font-family: Roboto
