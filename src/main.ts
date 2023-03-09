@@ -16,7 +16,6 @@ declare global {
 }
 
 function createWindow() {
-    const backgroundColor = 'A8C9F0'
     const win = new BrowserWindow({
         width: 800,
         height: 600,

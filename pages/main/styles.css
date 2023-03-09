@@ -12,12 +12,24 @@
 
 :root {
     --dark-blue: #A8C9F0;
-    --light-blue: #CCE3FF;
-    --highlight-blue: #d2e6ff;
+    --light-blue: #cce3ff;
+    --highlight-blue: #d1e6ff;
     --text-color: black;
-    --outline-color: #2D4766;
+    --outline-color: #2d4767;
     --outline-color-half-alpha: #2d47667F;
     --outline-color-zero-alpha: #2d476600;
+}
+
+:root {
+    /* --dark-blue: #fef7e1; */
+    --dark-blue: #eee8d5;
+    /* --light-blue: #ded7bf; */
+    --light-blue: #ddd6c2;
+    --highlight-blue: #fef9e7;
+    --text-color: black;
+    --outline-color: #7c6d36;
+    --outline-color-half-alpha: #7c6d367F;
+    --outline-color-zero-alpha: #7c6d3600;
 }
 
 /* :root {
@@ -216,7 +228,9 @@ body {
 
 .icon:hover {
     background: var(--highlight-blue);
+}
 
+.icon:hover:not(.active) {
     outline: 2px solid var(--outline-color-half-alpha);
 }
 
