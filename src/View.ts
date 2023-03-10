@@ -106,6 +106,7 @@ export class View {
     }
 }
 
+// DEPRECATED
 export class RoundView extends View {
     constructor(win: BrowserWindow, rect: Rect) {
         super(win, rect)
@@ -155,7 +156,7 @@ export class RoundView extends View {
             win.webContents.focus()
         })
 
-        
+
         const rt = new BrowserView({ webPreferences: {
             javascript: false,
             contextIsolation: true,

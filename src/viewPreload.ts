@@ -113,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
     container.style.flexDirection = 'column'
     container.style.alignItems = 'center'
     container.style.width = '100vw'
-    
+
     document.querySelector('.L3eUgb').insertBefore(container, logoCont)
     container.appendChild(logoCont)
     container.appendChild(searchCont)
