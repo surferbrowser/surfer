@@ -9,6 +9,7 @@ import fetch from 'cross-fetch'; // required 'fetch'
 
 export class View {
     view: BrowserView
+    id: number
     isHTMLFullScreen = false
     constructor(win: BrowserWindow, rect: Rect) {
         this.view = new BrowserView({

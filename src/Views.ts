@@ -30,35 +30,13 @@ export class RoundViews extends Views {
     lb: BrowserView
     rt: BrowserView
     rb: BrowserView
+    cornerCSSKeys: Array<string>
     constructor(win: BrowserWindow, rect: Rect) {
         super(win, rect)
 
         this.currentView = this.views[0]
 
-        const CSSes = Array<string>(null, null, null, null)
-
-        this.currentView.view.webContents.on('did-change-theme-color', (_e: Event, color: string) => {
-            [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
-                if (CSSes[i] !== null) {
-                    v.webContents.removeInsertedCSS(CSSes[i])
-                }
-                if (color !== null) {
-                    v.webContents.insertCSS(
-                    `div:before {
-                        color: ${color} !important;
-                    }`).then((value) => {
-                        CSSes[i] = value
-                    })
-                } else {
-                    v.webContents.insertCSS(
-                    `div:before {
-                        color: #ffffff !important;
-                    }`).then((value) => {
-                        CSSes[i] = value
-                    })
-                }
-            })
-        })
+        this.currentView.view.webContents.on('did-change-theme-color', (_e: Event, color: string) => this.themeColorChanged(color, this.currentView.id))
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 
@@ -105,7 +83,7 @@ export class RoundViews extends Views {
             this.win.webContents.focus()
         })
 
-        
+
         this.rt = new BrowserView({ webPreferences: {
             javascript: false,
             contextIsolation: true,
@@ -149,6 +127,10 @@ export class RoundViews extends Views {
 
         this.rb.webContents.on('focus', () => {
             this.win.webContents.focus()
+        })
+
+        this.rb.webContents.once('did-finish-load', () => {
+            ipcMain.emit('window-ready')
         })
 
         ipcMain.on('set-theme-color', (_e: Event, color: string) => {
@@ -197,6 +179,29 @@ export class RoundViews extends Views {
     changeToView(index: number): void {
         super.changeToView(index)
         this.raiseCorners()
+    }
+
+    themeColorChanged(color: string, viewID: number) {
+        [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
+            if (this.cornerCSSKeys[i] !== null) {
+                v.webContents.removeInsertedCSS(this.cornerCSSKeys[i])
+            }
+            if (color !== null) {
+                v.webContents.insertCSS(
+                `div:before {
+                    color: ${color} !important;
+                }`).then((value) => {
+                    this.cornerCSSKeys[i] = value
+                })
+            } else {
+                v.webContents.insertCSS(
+                `div:before {
+                    color: #ffffff !important;
+                }`).then((value) => {
+                    this.cornerCSSKeys[i] = value
+                })
+            }
+        })
     }
 }
 

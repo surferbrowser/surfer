@@ -10,19 +10,19 @@ export class Window {
     views: Views
     constructor(rect: Rect) {
         this.win = new BrowserWindow({
-            width: 800,
-            height: 600,
+            width: rect.width,
+            height: rect.height,
             minWidth: 518,
             minHeight: 350,
             title: 'Surfer',
             center: true,
-            // titleBarStyle: 'hidden',
             titleBarStyle: 'hiddenInset',
             // vibrancy: 'selection',
             // backgroundColor: '#ffffff',
             // backgroundColor: '#312E2B',
-            backgroundColor: '#A8C9F0',
             // backgroundColor: '#E8EAEE',
+            // backgroundColor: '#A8C9F0',
+            backgroundColor: '#eee8d5',
             titleBarOverlay: {
                 height: 39
             },
@@ -32,7 +32,17 @@ export class Window {
             show: false
         })
 
-        this.win.once('ready-to-show', this.win.show)
+        // this.win.once('ready-to-show', () => {
+        //     this.win.show()
+        // })
+
+        // this.win.webContents.once('did-finish-load', () => {
+        //     this.win.show()
+        // })
+
+        ipcMain.on('window-ready', () => {
+            this.win.show()
+        })
 
         this.win.setBackgroundColor('#ffffff')
 
@@ -43,9 +53,19 @@ export class Window {
         this.win.on('enter-full-screen', () => {
             this.win.webContents.send('fullscreen-entered')
         })
-        
+
         this.win.on('leave-full-screen', () => {
             this.win.webContents.send('fullscreen-left')
+        })
+
+        ipcMain.on('theme-color-changed', (_e: Event, color: string) => {
+            if (color !== null) {
+                this.win.setBackgroundColor(color)
+                this.win.webContents.send('set-theme-color', color)
+            } else {
+                this.win.setBackgroundColor('#A8C9F0')
+                this.win.webContents.send('set-theme-color', '#A8C9F0')
+            }
         })
     }
 }
