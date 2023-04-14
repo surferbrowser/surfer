@@ -1,6 +1,4 @@
 
-import { ipcRenderer } from "electron"
-
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.href !== 'https://www.google.com/') return
 
@@ -23,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const logo = <HTMLImageElement>(document.querySelector('.lnXdpd'))
 
-    logo.srcset = `http://localhost:1234/coloredLogo.png`
+    logo.srcset = `newtab://logo/`
 
     logo.ondragstart = () => false
 
@@ -54,16 +52,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
     (document.querySelector('.QCzoEc.z1asCe.MZy1Rb').children[0].firstChild as SVGElement).style.color = '#5e6369';
 
-    (document.querySelector('input.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
+    (document.querySelector('textarea.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
 
     const cssText = `
-    input.gLFyf::placeholder {
-        color: #5e6369; font-family: Roboto
+    textarea.gLFyf::placeholder {
+        color: #5e6369;
+        font-family: Roboto;
     }
 
-    input.gLFyf {
-        margin-top: -36px;
-        margin-left: 1px;
+    textarea.gLFyf {
+        line-height: 26px !important;
     }
 
     .WggQGd {

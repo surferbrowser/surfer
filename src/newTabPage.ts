@@ -5,32 +5,36 @@ import * as path from 'path'
 
 import Jimp from 'jimp'
 
-import { exec } from 'child_process'
+import { session } from 'electron'
+import 'path'
 
-import { app } from "electron"
-
-export function newTabPage(callback: () => void): void {
-
-    const download = function(url: string, filename: string, callback: () => void) {
-        if (fs.existsSync(path.join(__dirname, filename))) {
-            callback()
-            return
-        }
-        request.head(url, (_err: any, res: any) => {
-            request(url).pipe(fs.createWriteStream(path.join(__dirname, filename))).on('close', callback)
-        })
+function download(url: string, filename: string, callback: () => void) {
+    if (fs.existsSync(path.join(__dirname, filename))) {
+        callback()
+        return
     }
+    request.head(url, () => {
+        request(url).pipe(fs.createWriteStream(path.join(__dirname, filename))).on('close', callback)
+    })
+}
+
+export function newTabPage(done: () => void): void {
 
     download('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', '../pages/new-tab/logo.png', () => {
         // colorLogo(66, 143, 239).then(() => {
         colorLogo(199, 183, 143).then(() => {
-            const process = exec(`python3 -m http.server 1234 --directory "${path.join(__dirname, '../pages/new-tab')}"`)
+            const ses = session.fromPartition('persist:userSession')
 
-            callback()
+            ses.protocol.registerFileProtocol('newtab', (request, protocolCallback) => {
+                if (request.url.endsWith('/') ? request.url.slice(0, request.url.length - 1) : request.url) {
+                    protocolCallback(`${path.join(__dirname, '../pages/new-tab/coloredLogo.png')}`)
+                    return
+                }
 
-            app.on('before-quit', () => {
-                process.kill()
+                protocolCallback('')
             })
+
+            done()
         })
     })
 }

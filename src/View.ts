@@ -39,7 +39,7 @@ export class View {
 
         this.view.webContents.loadURL('https://google.com/')
 
-        // this.view.webContents.toggleDevTools()
+        // this.view.webContents.openDevTools()
 
 
         this.view.webContents.on('did-finish-load', () => {
