@@ -30,7 +30,7 @@ export function newTabPage(done: () => void): void {
                     protocolCallback(`${path.join(__dirname, '../pages/new-tab/coloredLogo.png')}`)
                     return
                 }
-                
+
                 protocolCallback('')
             })
 
