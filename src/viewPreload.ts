@@ -27,8 +27,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     logo.style.userSelect = 'none'
 
-    // document.body.style.backgroundColor = '#CCE3FF'
-    document.body.style.backgroundColor = '#F8F6F1'
+    document.body.style.backgroundColor = '#CCE3FF'
+    // document.body.style.backgroundColor = '#F8F6F1'
 
     document.querySelector('.o3j99.c93Gbe').remove()
 
@@ -55,8 +55,6 @@ window.addEventListener("DOMContentLoaded", () => {
     (document.querySelector('textarea.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
 
     (document.querySelector('div.xtSCL') as HTMLDivElement).remove();
-    
-    (document.querySelector('div.RNNXgb') as HTMLDivElement).style.borderRadius = '15px'
 
     const cssText = `
     @font-face {
@@ -101,12 +99,22 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     .RNNXgb {
-        box-shadow: 0 1px 6px rgb(32 33 36 / 28%) !important;
+        /*box-shadow: 0 1px 6px rgb(32 33 36 / 28%) !important;*/
+        box-shadow: none !important;
+
         border-color: rgba(223,225,229,0) !important;
         border-radius: 15px !important;
         background: #e7f2ff !important;
 
         height: 42px !important;
+    }
+
+    .RNNXgb:hover {
+        box-shadow: none !important;
+    }
+
+    .aajZCb {
+        box-shadow: none !important;
     }
 
     .A8SBwf {
