@@ -54,14 +54,32 @@ window.addEventListener("DOMContentLoaded", () => {
 
     (document.querySelector('textarea.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
 
+    (document.querySelector('div.xtSCL') as HTMLDivElement).remove();
+    
+    (document.querySelector('div.RNNXgb') as HTMLDivElement).style.borderRadius = '15px'
+
     const cssText = `
+    @font-face {
+        font-family: 'Inter Tight';
+        src: url('newtab://fonts/InterTight-VariableFont_wght.ttf');
+    }
+
     textarea.gLFyf::placeholder {
-        color: #5e6369;
-        font-family: Roboto;
+
+        color: #172739;
+        a-font-family: Roboto;
+        font-family: 'Inter Tight';
+        font-weight: regular;
     }
 
     textarea.gLFyf {
         line-height: 26px !important;
+        font-family: 'Inter Tight' !important;
+        font-weight: 500;
+    }
+
+    .a4bIc {
+        margin-top: 4px !important;
     }
 
     .WggQGd {
@@ -76,9 +94,17 @@ window.addEventListener("DOMContentLoaded", () => {
         min-height: 44px;
     }
 
+    /*.A8SBwf.sbfc > .RNNXgb, */
+
+    .A8SBwf.emcav > .RNNXgb {
+        border-radius: 15px 15px 0 0 !important;
+    }
+
     .RNNXgb {
         box-shadow: 0 1px 6px rgb(32 33 36 / 28%) !important;
         border-color: rgba(223,225,229,0) !important;
+        border-radius: 15px !important;
+        background: #e7f2ff !important;
 
         height: 42px !important;
     }
@@ -94,6 +120,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .XDyW0e {
         padding: 0 6.5px !important;
+    }
+
+    a.gb_e {
+        background: #E7F2FF;
     }
     `
 
