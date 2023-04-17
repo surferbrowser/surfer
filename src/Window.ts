@@ -27,7 +27,7 @@ export class Window {
                 height: 39
             },
             webPreferences: {
-                preload: path.join(__dirname, 'preload.js'),
+                preload: path.join(__dirname, 'preload.js')
             },
             show: false
         })
@@ -36,12 +36,20 @@ export class Window {
         //     this.win.show()
         // })
 
-        // this.win.webContents.once('did-finish-load', () => {
-        //     this.win.show()
-        // })
+        let showCount = 0
+
+        this.win.webContents.once('did-finish-load', () => {
+            showCount += 1
+            if (showCount >= 2) {
+                this.win.show()
+            }
+        })
 
         ipcMain.on('window-ready', () => {
-            this.win.show()
+            showCount += 1
+            if (showCount >= 2) {
+                this.win.show()
+            }
         })
 
         this.win.setBackgroundColor('#ffffff')

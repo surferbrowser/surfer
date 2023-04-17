@@ -20,7 +20,7 @@ export class View {
                 javascript: true,
                 webSecurity: true,
                 allowRunningInsecureContent: false,
-                contextIsolation: true,
+                contextIsolation: false,
                 safeDialogs: true,
                 autoplayPolicy: 'user-gesture-required',
                 minimumFontSize: 6,
@@ -38,8 +38,11 @@ export class View {
         this.view.setBackgroundColor('#ffffff')
 
         this.view.webContents.loadURL('https://google.com/')
+        // this.view.webContents.loadURL('surfer://new-tab-page/')
 
-        // this.view.webContents.openDevTools()
+        setTimeout(() => {
+            this.view.webContents.toggleDevTools()
+        }, 1000)
 
 
         this.view.webContents.on('did-finish-load', () => {
@@ -69,6 +72,7 @@ export class View {
 
         ipcMain.on('focus-view', () => {
             this.view.webContents.focus()
+            console.log('hi')
         })
 
         const widthOff = win.getBounds().width - rect.width - rect.x
@@ -101,9 +105,9 @@ export class View {
             this.view.setBounds({ x: rect.x, y: rect.y, width: bnds.width - widthOff - rect.x, height: bnds.height - heightOff  - rect.y })
         })
 
-        ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
-            blocker.enableBlockingInSession(this.view.webContents.session);
-        });
+        // ElectronBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+        //     blocker.enableBlockingInSession(this.view.webContents.session)
+        // })
     }
 }
 

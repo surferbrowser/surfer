@@ -17,38 +17,19 @@ declare global {
     }
 }
 
+app.commandLine.appendSwitch('enable-features', 'VaapiVideoDecoder,WaylandWindowDecorations')
+  
+app.commandLine.appendSwitch(
+    'disable-features',
+    'UseChromeOSDirectVideoDecoder'
+)
+app.commandLine.appendSwitch('enable-accelerated-mjpeg-decode')
+app.commandLine.appendSwitch('enable-accelerated-video')
+app.commandLine.appendSwitch('ignore-gpu-blacklist')
+app.commandLine.appendSwitch('enable-native-gpu-memory-buffers')
+app.commandLine.appendSwitch('enable-gpu-rasterization')
+
 function createWindow() {
-    // const win = new BrowserWindow({
-    //     width: 800,
-    //     height: 600,
-    //     minWidth: 518,
-    //     minHeight: 350,
-    //     title: 'Surfer',
-    //     center: true,
-    //     // titleBarStyle: 'hidden',
-    //     titleBarStyle: 'hiddenInset',
-    //     // vibrancy: 'selection',
-    //     // backgroundColor: '#ffffff',
-    //     // backgroundColor: '#312E2B',
-    //     // backgroundColor: '#E8EAEE',
-    //     // backgroundColor: '#A8C9F0',
-    //     backgroundColor: '#eee8d5',
-    //     titleBarOverlay: {
-    //         height: 39
-    //     },
-    //     webPreferences: {
-    //         preload: path.join(__dirname, 'preload.js'),
-    //     },
-    //     show: false
-    // })
-
-    // win.loadFile(path.join(__dirname, '../pages/main/index.html'))
-
-    // // win.once('ready-to-show', win.show)
-
-    // ipcMain.on('window-ready', () => {
-    //     win.show()
-    // })
 
     const win = new Window(new Rect(800, 600))
     
@@ -67,16 +48,6 @@ function createWindow() {
     // const view = new RoundView(win, new Rect(740, 577, 54, 23))
 
     // const view = new View(win, new Rect(800, 563, 0, 37))
-
-    // views.currentView.view.webContents.addListener('did-change-theme-color', (_e: Event, color: string) => {
-    //     if (color !== null) {
-    //         win.setBackgroundColor(color)
-    //         win.webContents.send('set-theme-color', color)
-    //     } else {
-    //         win.setBackgroundColor('#A8C9F0')
-    //         win.webContents.send('set-theme-color', '#A8C9F0')
-    //     }
-    // })
 }
 
 

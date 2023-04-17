@@ -1,6 +1,29 @@
 
+(function mockChromeUserAgent() {
+    const oiginalVoices = window.speechSynthesis.getVoices();
+    window.speechSynthesis.getVoices = function () {
+        return [
+        {
+            voiceURI: "Google US English",
+            name: "Google US English",
+            lang: "en-US",
+            localService: false,
+            default: false,
+        },
+        ];
+    };
+
+    //wait some arbitraty time before cleaning up the mess we did previously
+    setTimeout(() => {
+        window.speechSynthesis.getVoices = function () {
+        return oiginalVoices;
+        };
+    }, 10_000);
+})();
+
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.href !== 'https://www.google.com/') return
+    // if (window.location.href !== 'surfer://new-tab-page/') return
 
     const fontLinkOne = document.createElement('link')
     fontLinkOne.setAttribute('rel', 'preconnect')
@@ -63,17 +86,22 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     textarea.gLFyf::placeholder {
-
         color: #172739;
         a-font-family: Roboto;
         font-family: 'Inter Tight';
         font-weight: regular;
+
+        user-select: none;
     }
 
     textarea.gLFyf {
         line-height: 26px !important;
         font-family: 'Inter Tight' !important;
         font-weight: 500;
+    }
+
+    .ACRAdd.M2vV3 {
+        border-color: #17273933 !important;
     }
 
     .a4bIc {
@@ -85,7 +113,18 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     .sbic.sb27 {
-        filter: hue-rotate(5deg) brightness(0.62) saturate(1.05)
+        /*filter: hue-rotate(5deg) brightness(0.62) saturate(1.05);*/
+        filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);
+        /*hue-rotate(2deg) brightness(0.22) saturate(13)*/
+        /*hue-rotate(2deg) brightness(0.22) saturate(13.05)*/
+    }
+
+    .sbic.sb43 {
+        filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);
+    }
+
+    .ExCKkf.z1asCe.rzyADb {
+        color: #172739;
     }
 
     li.sbct {
@@ -106,7 +145,7 @@ window.addEventListener("DOMContentLoaded", () => {
         border-radius: 15px !important;
         background: #e7f2ff !important;
 
-        height: 42px !important;
+        min-height: 42px !important;
     }
 
     .RNNXgb:hover {
@@ -115,6 +154,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .aajZCb {
         box-shadow: none !important;
+        background: #E7F2FF !important;
+
+        font-family: 'Inter Tight' !important;
+        font-weight: 500;
+        color: #172739 !important;
     }
 
     .A8SBwf {
@@ -123,7 +167,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     .iblpc {
-        margin-left: 3px !important;
+        margin-left: 0px !important;
+        /*padding-right: 10px !important;*/
     }
 
     .XDyW0e {
@@ -133,6 +178,16 @@ window.addEventListener("DOMContentLoaded", () => {
     a.gb_e {
         background: #E7F2FF;
     }
+
+    .sbhl.sbct {
+        background: #f5f9ff;
+    }
+
+    .wM6W7d {
+        font-family: 'Inter Tight' !important;
+        font-weight: 500;
+        color: #172739 !important;
+    }
     `
 
     const style = document.createElement('style')
@@ -140,6 +195,16 @@ window.addEventListener("DOMContentLoaded", () => {
     style.appendChild(document.createTextNode(cssText))
 
     document.head.appendChild(style)
+
+    const searchSVG = `
+    <svg width="16" height="16" viewBox="-2 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="6" cy="6" r="6" fill="#172739"/>
+      <circle cx="6" cy="6" r="4" fill="#E7F2FF"/>
+      <rect x="10.0562" y="8.64209" width="7.49885" height="2" rx="1" transform="rotate(45 10.0562 8.64209)" fill="#172739"/>
+    </svg>
+    `
+
+    document.querySelector('.QCzoEc.z1asCe.MZy1Rb').innerHTML = searchSVG
 
     const logoCont = document.querySelector('.o3j99.LLD4me.yr19Zb.LS8OJ')
     const searchCont = document.querySelector('.o3j99.ikrT4e.om7nvf')

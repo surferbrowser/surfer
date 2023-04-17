@@ -20,22 +20,22 @@
     --outline-color-zero-alpha: #2d476600;
 }
 
-:root {
-    /* --dark-blue: #fef7e1; */
+/* :root {
+    --dark-blue: #fef7e1;//
     --dark-blue: #eee8d5;
-    /* --light-blue: #ded7bf; */
+    --light-blue: #ded7bf;//
     --light-blue: #ddd6c2;
     --highlight-blue: #fef9e7;
     --text-color: black;
     --outline-color: #7c6d36;
     --outline-color-half-alpha: #7c6d367F;
     --outline-color-zero-alpha: #7c6d3600;
-}
+} */
 
 /* :root {
     --dark-blue: #E8EAEE;
     --light-blue: #FFFFFF;
-    //--light-blue: #E8EAEE;
+    --light-blue: #E8EAEE;
     --highlight-blue: #FFFFFF;
     --text-color: black;
     --outline-color: #505050;
@@ -138,12 +138,17 @@ body {
     transition: outline-color 100ms ease-out;
 }
 
-.tab:hover {
+.tab:hover:not(.active) {
     background: var(--highlight-blue);
+
     /* background: #deb790; */
     /* background: #bed8f9; */
 
     outline: 2px solid var(--outline-color-half-alpha);
+}
+
+.tab.active {
+    background: var(--highlight-blue);
 }
 
 .tabTitle {
@@ -227,6 +232,10 @@ body {
 }
 
 .icon:hover {
+    background: var(--highlight-blue);
+}
+
+.icon.active {
     background: var(--highlight-blue);
 }
 

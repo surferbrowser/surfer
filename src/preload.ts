@@ -15,5 +15,5 @@ contextBridge.exposeInMainWorld('api', {
     setUrl: (url: string) => ipcRenderer.send('set-url', url),
 
     focusView: () => ipcRenderer.send('focus-view'),
-})
+});
 

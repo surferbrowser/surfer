@@ -43,6 +43,8 @@ export class RoundViews extends Views {
         const widthOff = this.win.getBounds().width - rect.width - rect.x
         const heightOff = this.win.getBounds().height - rect.height  - rect.y
 
+        this.cornerCSSKeys = Array(4)
+
         this.lt = new BrowserView({ webPreferences: {
             javascript: false,
             contextIsolation: true,
@@ -133,14 +135,14 @@ export class RoundViews extends Views {
             ipcMain.emit('window-ready')
         })
 
-        ipcMain.on('set-theme-color', (_e: Event, color: string) => {
-            [this.lt, this.lb, this.rt, this.rb].forEach((v) => {
-                v.webContents.insertCSS(
-                `div:before {
-                    color: ${color} !important;
-                }`)
-            })
-        })
+        // ipcMain.on('set-theme-color', (_e: Event, color: string) => {
+        //     [this.lt, this.lb, this.rt, this.rb].forEach((v) => {
+        //         v.webContents.insertCSS(
+        //         `div:before {
+        //             color: ${color} !important;
+        //         }`)
+        //     })
+        // })
 
 
         this.currentView.view.webContents.on('enter-html-full-screen', () => {
@@ -181,27 +183,30 @@ export class RoundViews extends Views {
         this.raiseCorners()
     }
 
-    themeColorChanged(color: string, viewID: number) {
-        [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
-            if (this.cornerCSSKeys[i] !== null) {
-                v.webContents.removeInsertedCSS(this.cornerCSSKeys[i])
-            }
-            if (color !== null) {
-                v.webContents.insertCSS(
-                `div:before {
-                    color: ${color} !important;
-                }`).then((value) => {
-                    this.cornerCSSKeys[i] = value
-                })
-            } else {
-                v.webContents.insertCSS(
-                `div:before {
-                    color: #ffffff !important;
-                }`).then((value) => {
-                    this.cornerCSSKeys[i] = value
-                })
-            }
-        })
+    themeColorChanged(color: string, viewID: number): void {
+        // [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
+        //     if (this.cornerCSSKeys[i] !== null) {
+        //         v.webContents.removeInsertedCSS(this.cornerCSSKeys[i])
+        //     }
+        //     if (color !== null) {
+        //         v.webContents.insertCSS(
+        //         `div:before {
+        //             color: ${color} !important;
+        //         }`).then((value) => {
+        //             this.cornerCSSKeys[i] = value
+        //         })
+        //     } else {
+        //         v.webContents.insertCSS(
+        //         `div:before {
+        //             color: #ffffff !important;
+        //         }`).then((value) => {
+        //             this.cornerCSSKeys[i] = value
+        //         })
+        //     }
+        // })
+        // if (color !== null && color !== undefined) {
+        //     ipcMain.emit('theme-color-changed', color)
+        // }
     }
 }
 
