@@ -3,17 +3,26 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('api', {
     // Handlers
-    handlePageTitleUpdated: (callback: () => void) => ipcRenderer.on('page-title-updated', callback),
-    handlePageURLUpdated: (callback: () => void) => ipcRenderer.on('page-url-updated', callback),
+    handlePageTitleUpdated: (callback: (title: string, tabid: number) => void) => ipcRenderer.on('page-title-updated', (_e, title: string, tabid: number) => callback(title, tabid)),
+    handlePageURLUpdated: (callback: (url: string, tabid: number) => void) => ipcRenderer.on('page-url-updated', (_e, url: string, tabid: number) => callback(url, tabid)),
 
     handleFullscreenEntered: (callback: () => void) => ipcRenderer.on('fullscreen-entered', callback),
     handleFullscreenLeft: (callback: () => void) => ipcRenderer.on('fullscreen-left', callback),
 
     handleSetThemeColor: (callback: () => void) => ipcRenderer.on('set-theme-color', callback),
 
+    handleCanGoBack: (callback: (can: boolean, tabid: number) => void) => ipcRenderer.on('can-go-back', (_e, can: boolean, tabid: number) => callback(can, tabid)),
+
+    handleCanGoForward: (callback: (can: boolean, tabid: number) => void) => ipcRenderer.on('can-go-forward', (_e, can: boolean, tabid: number) => callback(can, tabid)),
+
     // Setters
     setUrl: (url: string) => ipcRenderer.send('set-url', url),
 
-    focusView: () => ipcRenderer.send('focus-view'),
+    showTraffic: () => ipcRenderer.send('show-traffic'),
+    hideTraffic: () => ipcRenderer.send('hide-traffic'),
+
+    goBack: () => ipcRenderer.send('go-back'),
+    goForward: () => ipcRenderer.send('go-forward'),
+    reload: () => ipcRenderer.send('reload'),
 });
 

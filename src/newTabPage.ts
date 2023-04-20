@@ -20,7 +20,7 @@ function download(url: string, filename: string, callback: () => void) {
 
 export function newTabPage(done: () => void): void {
 
-    session.fromPartition('persist:userSession').setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.101 Safari/537.36','en-US,en')
+    // session.fromPartition('persist:userSession').setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.101 Safari/537.36','en-US,en')
     
     const ses = session.fromPartition('persist:userSession')
 

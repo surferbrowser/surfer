@@ -14,14 +14,65 @@ export class Views {
         this.rect = rect
 
         this.views = [new View(this.win, this.rect)]
+        this.currentView = this.views[0]
+
+        this.assignListeners(this.currentView)
+
+        ipcMain.on('set-url', (_ev: Event, url: string) => {
+            this.currentView.view.webContents.loadURL(url)
+            this.currentView.view.webContents.focus()
+        })
+
+        ipcMain.on('go-back', () => {
+            this.currentView.view.webContents.goBack()
+        })
+
+        ipcMain.on('go-forward', () => {
+            this.currentView.view.webContents.goForward()
+        })
+
+        ipcMain.on('reload', () => {
+            this.currentView.view.webContents.reload()
+        })
     }
 
-    changeToView(index: number): void {
-        if (index < 0 || index >= this.views.length) {
-            throw Error('Couldn\'t change to an out of bounds view')
-        }
+    getViewFromId(id: number): View {
+        this.views.forEach((view) => {
+            if (view.view.webContents.id === id) {
+                return view
+            }
+        })
+        return null
+    }
+
+    changeToView(id: number): void {
         this.win.removeBrowserView(this.currentView.view)
-        this.win.addBrowserView(this.views[index].view)
+        this.win.addBrowserView(this.getViewFromId(id).view)
+    }
+
+    assignListeners(view: View): void {
+        const sendCanGo = () => {
+            this.win.webContents.send('can-go-back', view.view.webContents.canGoBack(), view.view.webContents.id)
+            this.win.webContents.send('can-go-forward', view.view.webContents.canGoForward(), view.view.webContents.id)
+        }
+
+        view.view.webContents.on('page-title-updated', (_e, title) => {
+            this.win.webContents.send('page-title-updated', title, view.view.webContents.id)
+        })
+
+        view.view.webContents.on('will-navigate', (_e, url) => {
+            this.win.webContents.send('page-url-updated', url, view.view.webContents.id)
+
+            sendCanGo()
+        })
+
+        view.view.webContents.on('did-navigate', (_e, url) => {
+            this.win.webContents.send('page-url-updated', url, view.view.webContents.id)
+
+            sendCanGo()
+        })
+
+        // view.view.webContents.on('did-finish-load', () => {})
     }
 }
 
@@ -33,10 +84,6 @@ export class RoundViews extends Views {
     cornerCSSKeys: Array<string>
     constructor(win: BrowserWindow, rect: Rect) {
         super(win, rect)
-
-        this.currentView = this.views[0]
-
-        this.currentView.view.webContents.on('did-change-theme-color', (_e: Event, color: string) => this.themeColorChanged(color, this.currentView.id))
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 
@@ -171,6 +218,38 @@ export class RoundViews extends Views {
         })
     }
 
+    assignListeners(view: View): void {
+        super.assignListeners(view)
+
+        view.view.webContents.on('did-change-theme-color', (_e: Event, color: string) => {
+            // view.view.webContents.id;
+
+            // [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
+            //     if (this.cornerCSSKeys[i] !== null) {
+            //         v.webContents.removeInsertedCSS(this.cornerCSSKeys[i])
+            //     }
+            //     if (color !== null) {
+            //         v.webContents.insertCSS(
+            //         `div:before {
+            //             color: ${color} !important;
+            //         }`).then((value) => {
+            //             this.cornerCSSKeys[i] = value
+            //         })
+            //     } else {
+            //         v.webContents.insertCSS(
+            //         `div:before {
+            //             color: #ffffff !important;
+            //         }`).then((value) => {
+            //             this.cornerCSSKeys[i] = value
+            //         })
+            //     }
+            // })
+            // if (color !== null && color !== undefined) {
+            //     ipcMain.emit('theme-color-changed', color)
+            // }
+        })
+    }
+
     raiseCorners(): void {
         this.win.setTopBrowserView(this.lt)
         this.win.setTopBrowserView(this.lb)
@@ -180,33 +259,8 @@ export class RoundViews extends Views {
 
     changeToView(index: number): void {
         super.changeToView(index)
-        this.raiseCorners()
-    }
 
-    themeColorChanged(color: string, viewID: number): void {
-        // [this.lt, this.lb, this.rt, this.rb].forEach((v, i) => {
-        //     if (this.cornerCSSKeys[i] !== null) {
-        //         v.webContents.removeInsertedCSS(this.cornerCSSKeys[i])
-        //     }
-        //     if (color !== null) {
-        //         v.webContents.insertCSS(
-        //         `div:before {
-        //             color: ${color} !important;
-        //         }`).then((value) => {
-        //             this.cornerCSSKeys[i] = value
-        //         })
-        //     } else {
-        //         v.webContents.insertCSS(
-        //         `div:before {
-        //             color: #ffffff !important;
-        //         }`).then((value) => {
-        //             this.cornerCSSKeys[i] = value
-        //         })
-        //     }
-        // })
-        // if (color !== null && color !== undefined) {
-        //     ipcMain.emit('theme-color-changed', color)
-        // }
+        this.raiseCorners()
     }
 }
 

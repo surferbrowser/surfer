@@ -17,6 +17,9 @@ export class Window {
             title: 'Surfer',
             center: true,
             titleBarStyle: 'hiddenInset',
+            // titleBarStyle: 'customButtonsOnHover',
+            // trafficLightPosition: { x: 12, y: 11 }, // 'hiddenInset' equivalent
+            // trafficLightPosition: { x: 12, y: 13 }, // Chrome's position
             // vibrancy: 'selection',
             // backgroundColor: '#ffffff',
             // backgroundColor: '#312E2B',
@@ -31,6 +34,8 @@ export class Window {
             },
             show: false
         })
+
+        // this.win.setWindowButtonVisibility(false)
 
         // this.win.once('ready-to-show', () => {
         //     this.win.show()

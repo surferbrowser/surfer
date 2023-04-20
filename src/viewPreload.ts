@@ -1,25 +1,25 @@
 
-(function mockChromeUserAgent() {
-    const oiginalVoices = window.speechSynthesis.getVoices();
-    window.speechSynthesis.getVoices = function () {
-        return [
-        {
-            voiceURI: "Google US English",
-            name: "Google US English",
-            lang: "en-US",
-            localService: false,
-            default: false,
-        },
-        ];
-    };
+// (function mockChromeUserAgent() {
+//     const oiginalVoices = window.speechSynthesis.getVoices();
+//     window.speechSynthesis.getVoices = function () {
+//         return [
+//         {
+//             voiceURI: "Google US English",
+//             name: "Google US English",
+//             lang: "en-US",
+//             localService: false,
+//             default: false,
+//         },
+//         ];
+//     };
 
-    //wait some arbitraty time before cleaning up the mess we did previously
-    setTimeout(() => {
-        window.speechSynthesis.getVoices = function () {
-        return oiginalVoices;
-        };
-    }, 10_000);
-})();
+//     //wait some arbitraty time before cleaning up the mess we did previously
+//     setTimeout(() => {
+//         window.speechSynthesis.getVoices = function () {
+//             return oiginalVoices;
+//         };
+//     }, 10_000);
+// })();
 
 window.addEventListener("DOMContentLoaded", () => {
     if (window.location.href !== 'https://www.google.com/') return
@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
         color: #172739;
         a-font-family: Roboto;
         font-family: 'Inter Tight';
-        font-weight: regular;
+        font-weight: 550;
 
         user-select: none;
     }
@@ -97,7 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
     textarea.gLFyf {
         line-height: 26px !important;
         font-family: 'Inter Tight' !important;
-        font-weight: 500;
+        font-weight: 550;
     }
 
     .ACRAdd.M2vV3 {
@@ -157,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
         background: #E7F2FF !important;
 
         font-family: 'Inter Tight' !important;
-        font-weight: 500;
+        font-weight: 550;
         color: #172739 !important;
     }
 
@@ -185,7 +185,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .wM6W7d {
         font-family: 'Inter Tight' !important;
-        font-weight: 500;
+        font-weight: 550;
         color: #172739 !important;
     }
     `

@@ -9,8 +9,7 @@ import fetch from 'cross-fetch'; // required 'fetch'
 
 export class View {
     view: BrowserView
-    id: number
-    isHTMLFullScreen = false
+    protected isHTMLFullScreen = false
     constructor(win: BrowserWindow, rect: Rect) {
         this.view = new BrowserView({
             webPreferences: {
@@ -41,38 +40,17 @@ export class View {
         // this.view.webContents.loadURL('surfer://new-tab-page/')
 
         setTimeout(() => {
-            this.view.webContents.toggleDevTools()
-        }, 1000)
+            // this.view.webContents.toggleDevTools()
+        }, 100)
 
 
         this.view.webContents.on('did-finish-load', () => {
             this.view.webContents.setVisualZoomLevelLimits(1, 3)
         })
 
-        this.view.webContents.on('page-title-updated', (_ev, title) => {
-            win.webContents.send('page-title-updated', title)
-        })
-
-        this.view.webContents.on('will-navigate', (_ev, url) => {
-            win.webContents.send('page-url-updated', url)
-        })
-
-        this.view.webContents.on('did-navigate', (_ev, url) => {
-            win.webContents.send('page-url-updated', url)
-        })
-
         this.view.webContents.setWindowOpenHandler((details) => {
             this.view.webContents.loadURL(details.url)
             return { action: 'deny' }
-        })
-
-        ipcMain.on('set-url', (_ev: Event, url: string) => {
-            this.view.webContents.loadURL(url)
-        })
-
-        ipcMain.on('focus-view', () => {
-            this.view.webContents.focus()
-            console.log('hi')
         })
 
         const widthOff = win.getBounds().width - rect.width - rect.x
