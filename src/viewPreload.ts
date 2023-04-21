@@ -22,6 +22,19 @@
 // })();
 
 window.addEventListener("DOMContentLoaded", () => {
+
+    // Outline color correction to resemble other browsers
+
+    const outlineColorStyle = document.createElement('style')
+
+    outlineColorStyle.innerHTML = `* {
+        outline-color: #1A5FCC;
+    }`
+
+    console.log(outlineColorStyle)
+
+    console.log(document.head.appendChild(outlineColorStyle))
+
     if (window.location.href !== 'https://www.google.com/') return
     // if (window.location.href !== 'surfer://new-tab-page/') return
 
@@ -139,6 +152,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .RNNXgb {
         /*box-shadow: 0 1px 6px rgb(32 33 36 / 28%) !important;*/
+        /*box-shadow: 0 1px 6px rgb(45 71 103 / 28%) !important;*/
         box-shadow: none !important;
 
         border-color: rgba(223,225,229,0) !important;

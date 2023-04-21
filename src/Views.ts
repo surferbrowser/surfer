@@ -1,20 +1,24 @@
-import { BrowserView, BrowserWindow, Rectangle, ipcMain } from 'electron'
+import { BrowserView, BrowserWindow, Rectangle, ipcMain, session, webContents } from 'electron'
 import * as path from 'path'
 
 import { View } from './View'
 import Rect from './Rect'
+import { ElectronChromeExtensions } from 'electron-chrome-extensions'
 
 export class Views {
     win: BrowserWindow
     rect: Rectangle
     views: Array<View>
     currentView: View
-    constructor(win: BrowserWindow, rect: Rect) {
+    extensions: ElectronChromeExtensions
+    constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
         this.win = win
         this.rect = rect
 
         this.views = [new View(this.win, this.rect)]
         this.currentView = this.views[0]
+
+        this.extensions = extensions
 
         this.assignListeners(this.currentView)
 
@@ -70,9 +74,17 @@ export class Views {
             this.win.webContents.send('page-url-updated', url, view.view.webContents.id)
 
             sendCanGo()
+
+            // webContents.getAllWebContents().forEach((contents) => {
+            //     if (contents.getURL().indexOf('chrome-extension://') === 0) {
+            //         contents.openDevTools()
+            //     }
+            // })
         })
 
         // view.view.webContents.on('did-finish-load', () => {})
+
+        this.extensions.addTab(view.view.webContents, this.win)
     }
 }
 
@@ -82,8 +94,8 @@ export class RoundViews extends Views {
     rt: BrowserView
     rb: BrowserView
     cornerCSSKeys: Array<string>
-    constructor(win: BrowserWindow, rect: Rect) {
-        super(win, rect)
+    constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
+        super(win, rect, extensions)
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 

@@ -13,7 +13,8 @@
 :root {
     --dark-blue: #A8C9F0;
     --light-blue: #cce3ff;
-    --highlight-blue: #d1e6ff;
+    /* --highlight-blue: #d1e6ff; */
+    --highlight-blue: #e7f2ff;
     --text-color: black;
     --outline-color: #2d4767;
     --outline-color-half-alpha: #2d47667F;
@@ -153,15 +154,28 @@ body {
 
 #tabs {
     /* width: calc(100vw - 78px); */
-    width: calc(100vw - 84px);
+    /* width: calc(100vw - 84px); */
+    /* width: calc(100vw - 80px); */
+    width: calc(100vw - 80px - 4px);
     /* height: 37px; */
     height: 39px;
+
+    /* padding-left: 2px;
+    padding-right: 2px; */
+
+    /* overflow-x: scroll; */
 
     display: flex;
     flex-direction: row;
     align-items: center;
 
     gap: 6px;
+
+    -webkit-app-region: no-drag;
+}
+
+#tabs::-webkit-scrollbar {
+    display: none;
 }
 
 #trafficMargin {
@@ -178,7 +192,7 @@ body {
     /* min-width: 78px; */
     /* width: 84px; */
 
-    z-index: 10;
+    /* z-index: 10; */
 
     -webkit-app-region: no-drag;
 
@@ -188,10 +202,13 @@ body {
 
 #tabMargin {
     width: 6px;
+    min-width: 6px;
 }
 
 .tab {
     width: 100%;
+
+    min-width: 70px;
 
     /* max-width: 180px; */
     /* height: 25px;
@@ -232,7 +249,10 @@ body {
 }
 
 .tab:hover:not(.active) {
-    background: var(--highlight-blue);
+    /* background: var(--highlight-blue); */
+
+    /* background: #DAEBFF; */
+    background: #DCECFF;
 
     /* background: #deb790; */
     /* background: #bed8f9; */
@@ -242,6 +262,7 @@ body {
 
 .tab.active {
     background: var(--highlight-blue);
+    /* background: #e7f2ff; */
 }
 
 .tabTitle {

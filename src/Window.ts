@@ -30,7 +30,8 @@ export class Window {
                 height: 39
             },
             webPreferences: {
-                preload: path.join(__dirname, 'preload.js')
+                preload: path.join(__dirname, 'preload.js'),
+                // nodeIntegration: true
             },
             show: false
         })

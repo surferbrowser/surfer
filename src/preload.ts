@@ -1,6 +1,13 @@
 
 import { contextBridge, ipcRenderer } from 'electron'
 
+// import { injectBrowserAction } from '../node_modules/electron-chrome-extensions/dist/browser-action.js'
+// import { injectBrowserAction } from 'electron-chrome-extensions/dist/browser-action.js'
+
+// Inject <browser-action-list> element into our page
+
+// injectBrowserAction()
+
 contextBridge.exposeInMainWorld('api', {
     // Handlers
     handlePageTitleUpdated: (callback: (title: string, tabid: number) => void) => ipcRenderer.on('page-title-updated', (_e, title: string, tabid: number) => callback(title, tabid)),
