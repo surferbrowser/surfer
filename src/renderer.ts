@@ -7,7 +7,6 @@ buttons.forEach((button) => {
     let isMouseDown = false
 
     button.addEventListener('mousedown', () => {
-        // button.className = 'button active'
         button.classList.add('active')
         isMouseDown = true
         timeoutReached = false
@@ -16,7 +15,6 @@ buttons.forEach((button) => {
         timeout = setTimeout(() => {
             timeoutReached = true
             if (!isMouseDown) {
-                // button.className = 'button'
                 button.classList.remove('active')
             }
         }, 200)
@@ -25,7 +23,6 @@ buttons.forEach((button) => {
     document.addEventListener('mouseup', () => {
         isMouseDown = false
         if (timeoutReached) {
-            // button.className = 'button'
             button.classList.remove('active')
         }
     })
@@ -53,7 +50,6 @@ reloadButton.addEventListener('click', () => {
     }
 })
 
-//TODO
 
 window.api.handleCanGoBack((canGoBack: boolean) => {
     console.log('can go back: ' + canGoBack)
@@ -74,28 +70,6 @@ window.api.handleCanGoForward((canGoForward: boolean) => {
         forwardButton.classList.add('disabled')
     }
 })
-
-
-// const trafficMargin = document.getElementById('trafficMargin')
-
-// let timeout: NodeJS.Timeout = null
-
-// trafficMargin.addEventListener('mouseenter', () => {
-//     timeout = setTimeout(() => {
-//         trafficMargin.style.minWidth = '74px'
-//         window.api.showTraffic()
-//         setTimeout(() => {
-//             window.api.hideTraffic()
-//             trafficMargin.style.minWidth = '6px'
-//         }, 2000)
-//     }, 1000)
-// })
-
-// trafficMargin.addEventListener('mouseleave', () => {
-//     clearTimeout(timeout)
-//     // trafficMargin.style.minWidth = '6px'
-//     // window.api.hideTraffic()
-// })
 
 
 const tabTitle = document.querySelector('.tabTitle') as HTMLDivElement

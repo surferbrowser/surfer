@@ -37,17 +37,10 @@ function createWindow() {
     
     // win.webContents.openDevTools()
 
-    // const view = new RoundView(win, new Rect(788, 557, 6, 37))
 
-    // const view = new RoundView(win, new Rect(788, 555, 6, 39))
-
-    // const view = new RoundView(win, new Rect(740, 555, 54, 39))
-
-    // const views = new RoundViews(win, new Rect(740, 555, 54, 39))
-
-
+    /*
     const browserSession = session.fromPartition('persist:userSession')
-
+    
     const extensions = new ElectronChromeExtensions({
         session: browserSession
         // createTab(details) {
@@ -60,6 +53,7 @@ function createWindow() {
         //   // Optionally implemented for chrome.tabs.remove support
         // }
     })
+    */
 
     // browserSession.loadExtension(
     //     path.join(__dirname, '../extensions/cjpalhdlnbpafiamejdnhcphjbkeiagm/1.49.0_2'),
@@ -73,7 +67,8 @@ function createWindow() {
     //     { allowFileAccess: false }
     // )
 
-    const views = new RoundViews(win.win, new Rect(740, 555, 54, 39), extensions)
+    // const views = new RoundViews(win.win, new Rect(740, 555, 54, 39), extensions)
+    const views = new RoundViews(win.win, new Rect(740, 555, 54, 39))
 
     // const view = new RoundView(win, new Rect(740, 577, 54, 23))
 

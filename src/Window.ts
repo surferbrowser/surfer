@@ -1,6 +1,6 @@
-
 import { BrowserWindow, ipcMain } from 'electron'
 import * as path from 'path'
+
 
 import Rect from './Rect'
 import { Views } from './Views'
@@ -17,15 +17,7 @@ export class Window {
             title: 'Surfer',
             center: true,
             titleBarStyle: 'hiddenInset',
-            // titleBarStyle: 'customButtonsOnHover',
-            // trafficLightPosition: { x: 12, y: 11 }, // 'hiddenInset' equivalent
-            // trafficLightPosition: { x: 12, y: 13 }, // Chrome's position
-            // vibrancy: 'selection',
-            // backgroundColor: '#ffffff',
-            // backgroundColor: '#312E2B',
-            // backgroundColor: '#E8EAEE',
-            // backgroundColor: '#A8C9F0',
-            backgroundColor: '#eee8d5',
+            backgroundColor: '#A8C9F0',
             titleBarOverlay: {
                 height: 39
             },
@@ -36,29 +28,21 @@ export class Window {
             show: false
         })
 
-        // this.win.setWindowButtonVisibility(false)
-
-        // this.win.once('ready-to-show', () => {
-        //     this.win.show()
-        // })
-
-        let showCount = 0
+        let readyToShowCount = 0
 
         this.win.webContents.once('did-finish-load', () => {
-            showCount += 1
-            if (showCount >= 2) {
+            readyToShowCount += 1
+            if (readyToShowCount >= 5) {
                 this.win.show()
             }
         })
 
         ipcMain.on('window-ready', () => {
-            showCount += 1
-            if (showCount >= 2) {
+            readyToShowCount += 1
+            if (readyToShowCount >= 5) {
                 this.win.show()
             }
         })
-
-        this.win.setBackgroundColor('#ffffff')
 
         this.win.webContents.loadFile(path.join(__dirname, '../pages/main/index.html'))
 
@@ -72,15 +56,15 @@ export class Window {
             this.win.webContents.send('fullscreen-left')
         })
 
-        ipcMain.on('theme-color-changed', (_e: Event, color: string) => {
-            if (color !== null) {
-                this.win.setBackgroundColor(color)
-                this.win.webContents.send('set-theme-color', color)
-            } else {
-                this.win.setBackgroundColor('#A8C9F0')
-                this.win.webContents.send('set-theme-color', '#A8C9F0')
-            }
-        })
+        // ipcMain.on('theme-color-changed', (_e: Event, color: string) => {
+        //     if (color !== null) {
+        //         this.win.setBackgroundColor(color)
+        //         this.win.webContents.send('set-theme-color', color)
+        //     } else {
+        //         this.win.setBackgroundColor('#A8C9F0')
+        //         this.win.webContents.send('set-theme-color', '#A8C9F0')
+        //     }
+        // })
     }
 }
 

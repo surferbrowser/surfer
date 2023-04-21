@@ -5,7 +5,7 @@ import * as path from 'path'
 import Rect from './Rect'
 
 import { ElectronBlocker } from '@cliqz/adblocker-electron';
-import fetch from 'cross-fetch'; // required 'fetch'
+import fetch from 'cross-fetch'; // 'fetch' is required
 
 export class View {
     view: BrowserView
@@ -32,7 +32,6 @@ export class View {
         })
         win.addBrowserView(this.view)
         this.view.setBounds(rect)
-        // this.view.setAutoResize({ width: true, height: true })
         this.view.webContents.setVisualZoomLevelLimits(1, 3)
         this.view.setBackgroundColor('#ffffff')
 

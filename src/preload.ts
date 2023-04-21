@@ -1,7 +1,6 @@
 
 import { contextBridge, ipcRenderer } from 'electron'
 
-// import { injectBrowserAction } from '../node_modules/electron-chrome-extensions/dist/browser-action.js'
 // import { injectBrowserAction } from 'electron-chrome-extensions/dist/browser-action.js'
 
 // Inject <browser-action-list> element into our page

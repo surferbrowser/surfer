@@ -25,8 +25,8 @@ export function newTabPage(done: () => void): void {
     const ses = session.fromPartition('persist:userSession')
 
     download('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', '../pages/new-tab/logo.png', () => {
-        colorLogo(66, 143, 239).then(() => {
         // colorLogo(199, 183, 143).then(() => {
+        colorLogo(66, 143, 239).then(() => {
             const ses = session.fromPartition('persist:userSession')
 
             ses.protocol.registerFileProtocol('newtab', (request, protocolCallback) => {
