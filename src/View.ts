@@ -39,7 +39,7 @@ export class View {
         // this.view.webContents.loadURL('surfer://new-tab-page/')
 
         setTimeout(() => {
-            // this.view.webContents.toggleDevTools()
+            this.view.webContents.toggleDevTools()
         }, 100)
 
 

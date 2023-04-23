@@ -143,6 +143,10 @@ body {
     fill: var(--highlight-blue);
 }
 
+.button.active > svg > .iconBackground {
+    fill: var(--highlight-blue);
+}
+
 #reload {
     width: 26px;
     min-width: 26px;

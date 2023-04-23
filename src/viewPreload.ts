@@ -31,9 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
         outline-color: #1A5FCC;
     }`
 
-    console.log(outlineColorStyle)
-
-    console.log(document.head.appendChild(outlineColorStyle))
+    document.head.appendChild(outlineColorStyle)
 
     if (window.location.href !== 'https://www.google.com/') return
     // if (window.location.href !== 'surfer://new-tab-page/') return
@@ -57,10 +55,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const logo = <HTMLImageElement>(document.querySelector('.lnXdpd'))
 
-    logo.srcset = `newtab://logo/`
-
-    logo.ondragstart = () => false
-
+    if (!logo.id.includes('hplogo')) {
+        logo.srcset = `newtab://logo/`
+        
+        logo.ondragstart = () => false
+    }
+        
     logo.style.userSelect = 'none'
 
     document.body.style.backgroundColor = '#CCE3FF'
@@ -80,7 +80,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     spacerEl.style.height = '104px'
 
-    middlePart.parentNode.insertBefore(spacerEl, middlePart)
+    if (middlePart !== null) {
+        middlePart.parentNode.insertBefore(spacerEl, middlePart)
+    }
 
     document.querySelector('.lJ9FBc').remove();
 
@@ -230,6 +232,7 @@ window.addEventListener("DOMContentLoaded", () => {
     container.style.width = '100vw'
 
     document.querySelector('.L3eUgb').insertBefore(container, logoCont)
+    
     container.appendChild(logoCont)
     container.appendChild(searchCont)
 
