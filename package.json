@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/request": "^2.48.8",
-    "@types/sharp": "^0.31.1",
+    "@types/sharp": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "electron": "^24.1.2",
