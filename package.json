@@ -24,7 +24,7 @@
     "@cliqz/adblocker-electron": "^1.25.2",
     "cross-fetch": "^3.1.5",
     "electron-chrome-extensions": "^3.10.0",
-    "jimp": "^0.16.2",
+    "jimp": "^0.22.8",
     "request": "^2.88.2"
   }
 }
