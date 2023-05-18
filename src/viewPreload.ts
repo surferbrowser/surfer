@@ -171,6 +171,7 @@ window.addEventListener("DOMContentLoaded", () => {
     .aajZCb {
         box-shadow: none !important;
         background: #E7F2FF !important;
+        border-radius: 0 0 15px 15px !important;
 
         font-family: 'Inter Tight' !important;
         font-weight: 550;
@@ -191,7 +192,7 @@ window.addEventListener("DOMContentLoaded", () => {
         padding: 0 6.5px !important;
     }
 
-    a.gb_e {
+    a.gb_f {
         background: #E7F2FF;
     }
 
@@ -211,6 +212,12 @@ window.addEventListener("DOMContentLoaded", () => {
     style.appendChild(document.createTextNode(cssText))
 
     document.head.appendChild(style)
+
+    const micSVG = document.querySelector('.goxjub') as SVGElement
+
+    micSVG.childNodes.forEach((child) => {
+        (child as SVGPathElement).style.fill = '#172739'
+    })
 
     const searchSVG = `
     <svg width="16" height="16" viewBox="-2 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

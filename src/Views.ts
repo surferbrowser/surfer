@@ -10,16 +10,16 @@ export class Views {
     rect: Rectangle
     views: Array<View>
     currentView: View
-    extensions: ElectronChromeExtensions
-    constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
-    // constructor(win: BrowserWindow, rect: Rect) {
+    // extensions: ElectronChromeExtensions
+    // constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
+    constructor(win: BrowserWindow, rect: Rect) {
         this.win = win
         this.rect = rect
 
         this.views = [new View(this.win, this.rect)]
         this.currentView = this.views[0]
 
-        this.extensions = extensions
+        // this.extensions = extensions
 
         this.assignListeners(this.currentView)
 
@@ -76,14 +76,14 @@ export class Views {
 
             sendCanGo()
 
-            webContents.getAllWebContents().forEach((contents) => {
-                if (contents.getURL().indexOf('chrome-extension://') === 0) {
-                    contents.openDevTools()
-                }
-            })
+            // webContents.getAllWebContents().forEach((contents) => {
+            //     if (contents.getURL().indexOf('chrome-extension://') === 0) {
+            //         contents.openDevTools()
+            //     }
+            // })
         })
 
-        this.extensions.addTab(view.view.webContents, this.win)
+        // this.extensions.addTab(view.view.webContents, this.win)
     }
 }
 
@@ -93,10 +93,10 @@ export class RoundViews extends Views {
     rt: BrowserView
     rb: BrowserView
     cornerCSSKeys: Array<string>
-    constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
-        super(win, rect, extensions)
-        // constructor(win: BrowserWindow, rect: Rect) {
-        //     super(win, rect)
+    // constructor(win: BrowserWindow, rect: Rect, extensions: ElectronChromeExtensions) {
+    //     super(win, rect, extensions)
+        constructor(win: BrowserWindow, rect: Rect) {
+            super(win, rect)
 
         const { x, y, width, height } = this.views[0].view.getBounds()
 

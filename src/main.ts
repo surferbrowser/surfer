@@ -2,7 +2,7 @@
 import { app, BrowserWindow, session } from 'electron'
 import * as path from 'path'
 
-import { ElectronChromeExtensions } from 'electron-chrome-extensions'
+// import { ElectronChromeExtensions } from 'electron-chrome-extensions'
 
 import Rect from './Rect'
 // import { View, RoundView } from './View'
@@ -38,7 +38,7 @@ function createWindow() {
     // win.webContents.openDevTools()
 
 
-    // /*
+    /*
     const browserSession = session.fromPartition('persist:userSession')
     
     const extensions = new ElectronChromeExtensions({
@@ -53,28 +53,25 @@ function createWindow() {
         //   // Optionally implemented for chrome.tabs.remove support
         // }
     })
-    // */
+    */
 
     // browserSession.loadExtension(
     //     path.join(__dirname, '../extensions/cjpalhdlnbpafiamejdnhcphjbkeiagm/1.49.0_2'),
-    //     // allowFileAccess is required to load the devtools extension on file:// URLs.
     //     { allowFileAccess: false }
     // )
 
     // browserSession.loadExtension(
     //     path.join(__dirname, '../extensions/edeocnllmaooibmigmielinnjiihifkn/1.9.4_0'),
-    //     // allowFileAccess is required to load the devtools extension on file:// URLs.
     //     { allowFileAccess: false }
     // )
 
-    browserSession.loadExtension(
-        path.join(__dirname, '../extensions/aapbdbdomjkkjkaonfhkkikfgjllcleb/2.0.13_0'),
-        // allowFileAccess is required to load the devtools extension on file:// URLs.
-        { allowFileAccess: false }
-    )
+    // browserSession.loadExtension(
+    //     path.join(__dirname, '../extensions/aapbdbdomjkkjkaonfhkkikfgjllcleb/2.0.13_0'),
+    //     { allowFileAccess: false }
+    // )
 
-    const views = new RoundViews(win.win, new Rect(740, 555, 54, 39), extensions)
-    // const views = new RoundViews(win.win, new Rect(740, 555, 54, 39))
+    // const views = new RoundViews(win.win, new Rect(740, 555, 54, 39), extensions)
+    const views = new RoundViews(win.win, new Rect(740, 555, 54, 39))
 
     // const view = new RoundView(win, new Rect(740, 577, 54, 23))
 
