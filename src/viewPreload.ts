@@ -63,8 +63,9 @@ window.addEventListener("DOMContentLoaded", () => {
         
     logo.style.userSelect = 'none'
 
-    document.body.style.backgroundColor = '#CCE3FF'
+    // document.body.style.backgroundColor = '#CCE3FF'
     // document.body.style.backgroundColor = '#F8F6F1'
+    document.body.style.backgroundColor = '#FAFCCC'
 
     document.querySelector('.o3j99.c93Gbe').remove()
 
@@ -88,7 +89,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     (document.querySelector('.aajZCb') as HTMLElement).style.marginBottom = '10px';
 
-    (document.querySelector('.QCzoEc.z1asCe.MZy1Rb').children[0].firstChild as SVGElement).style.color = '#5e6369';
+    // (document.querySelector('.QCzoEc.z1asCe.MZy1Rb').children[0].firstChild as SVGElement).style.color = '#5e6369';
+    (document.querySelector('.QCzoEc.z1asCe.MZy1Rb').children[0].firstChild as SVGElement).style.color = '#69695E';
 
     (document.querySelector('textarea.gLFyf') as HTMLInputElement).setAttribute('placeholder', 'Search Google or type a URL');
 
@@ -101,7 +103,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     textarea.gLFyf::placeholder {
-        color: #172739;
+        /*color: #172739;*/
+        color: #383917;
         a-font-family: Roboto;
         font-family: 'Inter Tight';
         font-weight: 550;
@@ -116,7 +119,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     .ACRAdd.M2vV3 {
-        border-color: #17273933 !important;
+        /*border-color: #17273933 !important;*/
+        border-color: #38391733 !important;
     }
 
     .a4bIc {
@@ -139,7 +143,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     .ExCKkf.z1asCe.rzyADb {
-        color: #172739;
+        /*color: #172739;*/
+        color: #383917;
     }
 
     li.sbct {
@@ -159,7 +164,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
         border-color: rgba(223,225,229,0) !important;
         border-radius: 15px !important;
-        background: #e7f2ff !important;
+        /*background: #e7f2ff !important;*/
+        background: #FEFFE7 !important;
 
         min-height: 42px !important;
     }
@@ -170,12 +176,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .aajZCb {
         box-shadow: none !important;
-        background: #E7F2FF !important;
+        /*background: #E7F2FF !important;*/
+        background: #FEFFE7 !important;
         border-radius: 0 0 15px 15px !important;
 
         font-family: 'Inter Tight' !important;
         font-weight: 550;
-        color: #172739 !important;
+        /*color: #172739 !important;*/
+        color: #383917 !important;
     }
 
     .A8SBwf {
@@ -192,18 +200,21 @@ window.addEventListener("DOMContentLoaded", () => {
         padding: 0 6.5px !important;
     }
 
-    a.gb_f {
-        background: #E7F2FF;
+    a.gb_d {
+        /*background: #E7F2FF;*/
+        background: #FEFFE7;
     }
 
     .sbhl.sbct {
-        background: #f5f9ff;
+        /*background: #f5f9ff;*/
+        background: #FEFFF5;
     }
 
     .wM6W7d {
         font-family: 'Inter Tight' !important;
         font-weight: 550;
-        color: #172739 !important;
+        /*color: #172739 !important;*/
+        color: #383917 !important;
     }
     `
 
@@ -213,17 +224,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     document.head.appendChild(style)
 
-    const micSVG = document.querySelector('.goxjub') as SVGElement
-
-    micSVG.childNodes.forEach((child) => {
-        (child as SVGPathElement).style.fill = '#172739'
-    })
-
     const searchSVG = `
     <svg width="16" height="16" viewBox="-2 -1 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="6" cy="6" r="6" fill="#172739"/>
-      <circle cx="6" cy="6" r="4" fill="#E7F2FF"/>
-      <rect x="10.0562" y="8.64209" width="7.49885" height="2" rx="1" transform="rotate(45 10.0562 8.64209)" fill="#172739"/>
+      <!--<circle cx="6" cy="6" r="6" fill="#172739"/>-->
+      <circle cx="6" cy="6" r="6" fill="#383917"/>
+      <!--<circle cx="6" cy="6" r="4" fill="#E7F2FF"/>-->
+      <circle cx="6" cy="6" r="4" fill="#FEFFE7"/>
+      <!--<rect x="10.0562" y="8.64209" width="7.49885" height="2" rx="1" transform="rotate(45 10.0562 8.64209)" fill="#172739"/>-->
+      <rect x="10.0562" y="8.64209" width="7.49885" height="2" rx="1" transform="rotate(45 10.0562 8.64209)" fill="#383917"/>
     </svg>
     `
 
@@ -246,6 +254,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const voiceSearchIcon = document.querySelector('.goxjub') as SVGElement
     voiceSearchIcon.setAttribute('viewBox', '0 0 28 28')
     voiceSearchIcon.style.marginTop = '4px'
+
+    voiceSearchIcon.childNodes.forEach((child) => {
+        // (child as SVGPathElement).style.fill = '#172739'
+        (child as SVGPathElement).style.fill = '#383917'
+    })
 
     const reportButton = document.getElementById('sbfblt')
 

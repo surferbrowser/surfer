@@ -19,6 +19,20 @@
     --outline-color: #2d4767;
     --outline-color-half-alpha: #2d47667F;
     --outline-color-zero-alpha: #2d476600;
+
+    --icon-color-disabled: #8fadd1;
+}
+
+:root {
+    --dark-blue: #EDF0A8;
+    --light-blue: #FAFCCC;
+    --highlight-blue: #FEFFE7;
+    --text-color: black;
+    --outline-color: #64672D;
+    --outline-color-half-alpha: #63662D7F;
+    --outline-color-zero-alpha: #63662D00;
+
+    --icon-color-disabled: #CED18F;
 }
 
 /* :root {
@@ -132,10 +146,11 @@ body {
 }
 
 .button.disabled > svg > .iconColor {
-    fill: hsl(213, 42%, 69%);
+    fill: var(--icon-color-disabled);
 }
 
 .iconBackground {
+    fill: var(--light-blue);
     transition: fill 100ms ease-out;
 }
 

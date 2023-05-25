@@ -5,7 +5,7 @@ import * as path from 'path'
 
 import Jimp from 'jimp'
 
-import { app, session } from 'electron'
+import { session } from 'electron'
 import 'path'
 
 function download(url: string, filename: string, callback: () => void) {
@@ -26,7 +26,10 @@ export function newTabPage(done: () => void): void {
 
     download('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', '../pages/new-tab/logo.png', () => {
         // colorLogo(199, 183, 143).then(() => {
-        colorLogo(66, 143, 239).then(() => {
+        // colorLogo(66, 143, 239).then(() => {
+        // colorLogo(211, 219, 57).then(() => {
+        // colorLogo(56, 57, 23).then(() => {
+        colorLogo(51, 52, 20).then(() => {
             const ses = session.fromPartition('persist:userSession')
 
             ses.protocol.registerFileProtocol('newtab', (request, protocolCallback) => {
