@@ -133,13 +133,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
     .sbic.sb27 {
         /*filter: hue-rotate(5deg) brightness(0.62) saturate(1.05);*/
-        filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);
+        /*filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);*/
+        filter: brightness(0.22);
         /*hue-rotate(2deg) brightness(0.22) saturate(13)*/
         /*hue-rotate(2deg) brightness(0.22) saturate(13.05)*/
     }
 
     .sbic.sb43 {
-        filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);
+        /*filter: hue-rotate(2deg) brightness(0.22) saturate(13.05);*/
+        filter: brightness(0.22);
     }
 
     .ExCKkf.z1asCe.rzyADb {

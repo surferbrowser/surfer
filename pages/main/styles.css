@@ -14,6 +14,7 @@
     --dark-blue: #a8c9f0;
     --light-blue: #cce3ff;
     /* --highlight-blue: #d1e6ff; */
+    --near-highlight-blue: #dcecff;
     --highlight-blue: #e7f2ff;
     --text-color: black;
     --outline-color: #2d4767;
@@ -26,6 +27,7 @@
 :root {
     --dark-blue: #EDF0A8;
     --light-blue: #FAFCCC;
+    --near-highlight-blue: #FEFFE5;
     --highlight-blue: #FEFFE7;
     --text-color: black;
     --outline-color: #64672D;
@@ -204,8 +206,13 @@ body {
     height: 39px;
     min-height: 39px; */
 
+    position: relative;
+
     width: 74px;
     min-width: 74px;
+
+    height: 39px;
+    min-height: 39px;
 
     /* width: 78px; */
     /* min-width: 78px; */
@@ -213,11 +220,41 @@ body {
 
     /* z-index: 10; */
 
-    -webkit-app-region: no-drag;
+    -webkit-app-region: drag;
 
     transition: min-width 100ms ease-out;
 }
 
+#trafficLights {
+    position: absolute;
+
+    left: 13px;
+    top: 13px;
+    
+    width: 52px;
+    height: 12px;
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trafficButton {
+    width: 12px;
+    min-width: 12px;
+    max-width: 12px;
+
+    height: 12px;
+    min-height: 12px;
+    max-height: 12px;
+
+    border-radius: 12px;
+
+    background: var(--icon-color-disabled);
+}
 
 #tabMargin {
     width: 6px;
@@ -271,7 +308,8 @@ body {
     /* background: var(--highlight-blue); */
 
     /* background: #DAEBFF; */
-    background: #DCECFF;
+    /* background: #DCECFF; */
+    background: var(--near-highlight-blue);
 
     /* background: #deb790; */
     /* background: #bed8f9; */
@@ -325,6 +363,35 @@ body {
 /* #topSpacer {
     height: 23px;
 } */
+
+.tabSeparator {
+    min-width: 3px;
+    max-width: 3px;
+    height: 17px;
+
+    background: var(--outline-color);
+
+    border-radius: 100vw;
+}
+
+.tabSeparator ~ div.tab {
+    background: white;
+    /* outline-color: black; */
+}
+
+.tabSeparator ~ div.tab:hover:not(.active) {
+    /* background: hsl(65, 100%, 97.5%); */
+    background: hsl(69, 100%, 99%);
+
+    /* background: #deb790; */
+    /* background: #bed8f9; */
+
+    outline: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.tabSeparator ~ div.tab.active {
+    outline: 2px solid black;
+}
 
 #sidebar {
     width: 42px;

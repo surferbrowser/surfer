@@ -17,7 +17,13 @@
     
     <div id="tabBar">
 
-      <div id="trafficMargin"></div>
+      <div id="trafficMargin">
+        <div id="trafficLights">
+          <div class="trafficButton"></div>
+          <div class="trafficButton"></div>
+          <div class="trafficButton"></div>
+        </div>
+      </div>
 
       <div class="button disabled" id="back">
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +55,29 @@
 
       <div id="tabs">
 
-        <div class="tab active" tabid="0">
+        <div class="tab" tabid="0">
+          <div class="tabTitle">New Tab</div>
+          <input class="tabInput" type="text" value="New Tab" spellcheck="false"></input>
+        </div>
+
+        <div class="tab" tabid="1">
+          <div class="tabTitle">New Tab</div>
+          <input class="tabInput" type="text" value="New Tab" spellcheck="false"></input>
+        </div>
+
+        <div class="tabSeparator"></div>
+
+        <div class="tab active" tabid="2">
+          <div class="tabTitle">New Tab</div>
+          <input class="tabInput" type="text" value="New Tab" spellcheck="false"></input>
+        </div>
+
+        <div class="tab" tabid="3">
+          <div class="tabTitle">New Tab</div>
+          <input class="tabInput" type="text" value="New Tab" spellcheck="false"></input>
+        </div>
+
+        <div class="tab" tabid="4">
           <div class="tabTitle">New Tab</div>
           <input class="tabInput" type="text" value="New Tab" spellcheck="false"></input>
         </div>
@@ -64,7 +92,7 @@
 
     <div id="sidebar">
 
-      <div class="icon">
+      <div class="icon active">
         <img src="notion.png" draggable="false">
       </div>
 
