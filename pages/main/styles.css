@@ -285,6 +285,7 @@ body {
     font-size: 11pt;
 
     color: var(--text-color);
+    color: var(--outline-color);
 
     background: var(--light-blue);
 
@@ -376,7 +377,7 @@ body {
 
 .tabSeparator ~ div.tab {
     background: white;
-    /* outline-color: black; */
+    color: black;
 }
 
 .tabSeparator ~ div.tab:hover:not(.active) {
