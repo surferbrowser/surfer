@@ -16,9 +16,9 @@ export class Window {
             minHeight: 350,
             title: 'Surfer',
             center: true,
-            // titleBarStyle: 'hiddenInset',
             titleBarStyle: 'customButtonsOnHover',
-            trafficLightPosition: { x: 12, y: 11 },
+            trafficLightPosition: { x: 12, y: 12 },
+            // trafficLightPosition: { x: 10, y: 11.5 },
             // backgroundColor: '#A8C9F0',
             backgroundColor: '#edf0a8',
             titleBarOverlay: {
