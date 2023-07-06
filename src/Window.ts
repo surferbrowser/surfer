@@ -35,14 +35,14 @@ export class Window {
 
         this.win.webContents.once('did-finish-load', () => {
             readyToShowCount += 1
-            if (readyToShowCount >= 5) {
+            if (readyToShowCount >= 6) {
                 this.win.show()
             }
         })
 
-        ipcMain.on('window-ready', () => {
+        ipcMain.on('corner-ready', () => {
             readyToShowCount += 1
-            if (readyToShowCount >= 5) {
+            if (readyToShowCount >= 6) {
                 this.win.show()
             }
         })

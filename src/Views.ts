@@ -19,6 +19,10 @@ export class Views {
         this.views = [new View(this.win, this.rect)]
         this.currentView = this.views[0]
 
+        this.currentView.view.webContents.once('did-finish-load', () => {
+            ipcMain.emit('corner-ready')
+        })
+
         // this.extensions = extensions
 
         this.assignListeners(this.currentView)
@@ -123,7 +127,7 @@ export class RoundViews extends Views {
         })
 
         this.lt.webContents.once('did-finish-load', () => {
-            ipcMain.emit('window-ready')
+            ipcMain.emit('corner-ready')
         })
 
 
@@ -150,7 +154,7 @@ export class RoundViews extends Views {
         })
 
         this.lb.webContents.once('did-finish-load', () => {
-            ipcMain.emit('window-ready')
+            ipcMain.emit('corner-ready')
         })
 
 
@@ -177,7 +181,7 @@ export class RoundViews extends Views {
         })
 
         this.rt.webContents.once('did-finish-load', () => {
-            ipcMain.emit('window-ready')
+            ipcMain.emit('corner-ready')
         })
 
 
@@ -204,7 +208,7 @@ export class RoundViews extends Views {
         })
 
         this.rb.webContents.once('did-finish-load', () => {
-            ipcMain.emit('window-ready')
+            ipcMain.emit('corner-ready')
         })
 
         // ipcMain.on('set-theme-color', (_e: Event, color: string) => {
